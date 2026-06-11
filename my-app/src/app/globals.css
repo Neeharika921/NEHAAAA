@@ -1,11 +1,260 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --fg: #1a1a1a;
+  --bg: #f1ecdf;
+  --fg: #241c15;
+  --brick: #a13524;
+  --cream: #f1ecdf;
+  --paper: #f4f0e6;
+  --ink: #1c1410;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+.font-type {
+  font-family: var(--font-type);
+}
+
+/* film grain over the hero */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+}
+
+/* hero entrance */
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    translate: 0 -22px;
+  }
+}
+
+@keyframes develop {
+  from {
+    opacity: 0;
+    filter: grayscale(1) contrast(0.25) brightness(1.7);
+  }
+}
+
+@keyframes stick {
+  from {
+    opacity: 0;
+    scale: 1.12;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+.anim-drop {
+  animation: drop-in 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
+}
+
+.anim-develop {
+  animation: develop 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) 0.4s backwards;
+}
+
+.anim-stick {
+  animation: stick 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) 1.25s backwards;
+}
+
+.anim-rise {
+  animation: rise 0.7s ease-out 1.6s backwards;
+}
+
+/* scroll-triggered reveals (driven by Reveal.tsx) */
+[data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+[data-reveal='rise'] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* paper dropped onto the board, settling into place */
+[data-reveal='place'] {
+  opacity: 0;
+  transform: translateY(56px) rotate(3deg) scale(1.03);
+}
+
+/* pressed in like a rubber stamp */
+[data-reveal='stamp'] {
+  opacity: 0;
+  transform: scale(1.3) rotate(-2deg);
+  transition-duration: 0.55s;
+  transition-timing-function: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* twine draws itself (paths need pathLength="1") */
+[data-reveal='draw'] path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2.4s ease 0.3s;
+}
+
+[data-reveal='draw'].is-in path {
+  stroke-dashoffset: 0;
+}
+
+/* staggered children inside a reveal */
+[data-reveal] .stagger {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+[data-reveal].is-in .stagger {
+  opacity: 1;
+  transform: none;
+}
+
+/* about panel slides in from the left over the pinned hero.
+   Plain flow on mobile / browsers without scroll-driven animations. */
+@keyframes slide-in-panel {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-recede {
+  to {
+    transform: scale(0.93) translateX(5%);
+    filter: brightness(0.8);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .slide-stage {
+      height: 200vh;
+      view-timeline: --stage block;
+    }
+
+    .slide-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* hero sinks back as the panel covers it */
+    .slide-pin > :first-child {
+      animation: hero-recede both linear;
+      animation-timeline: --stage;
+      animation-range: contain 0% contain 70%;
+      transform-origin: 75% center;
+    }
+
+    .slide-panel {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      will-change: transform;
+      animation: slide-in-panel both linear;
+      animation-timeline: --stage;
+      /* finish a touch early so the panel settles before the pin releases */
+      animation-range: contain 0% contain 85%;
+      box-shadow: 40px 0 80px rgba(60, 20, 10, 0.45);
+    }
+
+    .slide-panel section {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  }
+}
+
+/* sliding marquee ribbon */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+/* skills folder: papers tuck behind the folder until it's clicked (desktop) */
+@media (min-width: 768px) {
+  .folder-paper {
+    transition:
+      transform 0.8s cubic-bezier(0.2, 0.8, 0.3, 1),
+      opacity 0.5s ease;
+    transition-delay: var(--d, 0ms);
+  }
+
+  .folder-closed .folder-paper {
+    opacity: 0;
+    pointer-events: none;
+    transform: var(--tuck, translateY(140px) scale(0.4));
+    transition-delay: 0ms;
+  }
+}
+
+/* gentle drift for loose doodads */
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+.float-slow {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .anim-drop,
+  .anim-develop,
+  .anim-stick,
+  .anim-rise,
+  .float-slow,
+  .marquee-track {
+    animation: none;
+  }
+  [data-reveal],
+  [data-reveal] .stagger,
+  [data-reveal='draw'] path,
+  .folder-paper {
+    transition: none;
+  }
 }

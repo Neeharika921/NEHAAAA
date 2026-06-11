@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono } from 'next/font/google';
+import { Caveat, Special_Elite, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
 const mono = Geist_Mono({
@@ -7,14 +7,25 @@ const mono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const hand = Caveat({
+  variable: '--font-hand',
+  subsets: ['latin'],
+});
+
+const typewriter = Special_Elite({
+  variable: '--font-type',
+  weight: '400',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
-  title: 'Neeharika Kuppili',
-  description: 'Data Science undergraduate — Python, Machine Learning, NLP',
+  title: 'Neeharika Kuppili — Data Science Engineer',
+  description: 'Data Science Engineer — Python, Machine Learning, NLP',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={mono.variable}>
+    <html lang="en" className={`${mono.variable} ${hand.variable} ${typewriter.variable}`}>
       <body className="font-[family-name:var(--font-mono)] antialiased">{children}</body>
     </html>
   );

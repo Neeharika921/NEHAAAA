@@ -2,7 +2,8 @@ import type { WorkExperience, Project, Certification, SkillCategory, Education }
 
 export const personal = {
   name: 'Neeharika Kuppili',
-  greeting: "hi! i'm neeharika.",
+  role: 'data science engineer',
+  greeting: "hi! i'm Neeharika.",
   email: 'kuppilineeharika09@gmail.com',
   github: 'https://github.com/Neeharika921',
   linkedin: 'https://www.linkedin.com/in/neeharika-kuppili-665706289/',
