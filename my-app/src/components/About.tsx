@@ -42,7 +42,7 @@ export default function About() {
     <section id="about" className="relative overflow-hidden bg-[#9c2c1c] px-6 py-24 text-[#f1ecdf] md:py-32">
       <div aria-hidden className="grain pointer-events-none absolute inset-0" />
 
-      <div className="mx-auto grid w-full max-w-5xl items-center gap-16 md:grid-cols-[auto_1fr] md:gap-24">
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-[auto_1fr] md:gap-24">
         {/* postage stamp collage */}
         <Reveal effect="stamp" className="relative mx-auto w-fit">
           {/* repeated-signature watermark box */}

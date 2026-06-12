@@ -119,7 +119,7 @@ function HandArrow({ flip = false }: { flip?: boolean }) {
   return (
     <svg
       viewBox="0 0 64 44"
-      className={`h-8 w-12 shrink-0 transition-transform duration-300 group-hover:-translate-y-1 ${flip ? '-scale-x-100' : ''}`}
+      className={`h-6 w-9 shrink-0 transition-transform duration-300 group-hover:-translate-y-1 sm:h-8 sm:w-12 ${flip ? '-scale-x-100' : ''}`}
       aria-hidden
     >
       <path d="M62 36 C36 44 10 32 7 9" stroke="currentColor" strokeWidth="3.2" fill="none" strokeLinecap="round" />
@@ -176,7 +176,7 @@ export default function Hero() {
 
       {/* taped name banner */}
       <div
-        className="anim-stick mt-12 -rotate-[0.8deg] bg-[#a13524] px-10 py-2.5 sm:px-16 sm:py-3"
+        className="anim-stick mt-10 -rotate-[0.8deg] bg-[#a13524] px-6 py-2.5 sm:mt-12 sm:px-16 sm:py-3"
         style={{
           clipPath:
             'polygon(0% 14%, 3% 0%, 50% 6%, 97% 2%, 100% 12%, 98.4% 38%, 100% 62%, 99% 100%, 55% 93%, 3% 100%, 0.4% 76%, 1.6% 44%)',
@@ -184,7 +184,7 @@ export default function Hero() {
             'radial-gradient(circle at 8% 30%, rgba(241,236,223,0.22) 0 6px, transparent 7px), radial-gradient(circle at 94% 70%, rgba(241,236,223,0.18) 0 5px, transparent 6px), radial-gradient(circle at 70% 15%, rgba(241,236,223,0.12) 0 4px, transparent 5px)',
         }}
       >
-        <h1 className="font-hand text-5xl font-semibold tracking-wide text-[#f4efe3] sm:text-6xl md:text-7xl">
+        <h1 className="font-hand whitespace-nowrap text-[clamp(2.25rem,11vw,3rem)] font-semibold tracking-wide text-[#f4efe3] sm:text-6xl md:text-7xl">
           {personal.name}
         </h1>
       </div>
@@ -206,11 +206,11 @@ export default function Hero() {
       {/* hand-drawn arrows + CTA */}
       <a
         href="#more"
-        className="anim-rise group mt-5 flex items-center gap-4 text-[#a13524] sm:gap-6"
+        className="anim-rise group mt-5 flex items-center gap-2.5 text-[#a13524] sm:gap-6"
         style={{ animationDelay: '1.8s' }}
       >
         <HandArrow />
-        <span className="font-type text-[10px] tracking-[0.3em] underline-offset-4 group-hover:underline sm:text-xs">
+        <span className="font-type text-[10px] tracking-[0.18em] underline-offset-4 group-hover:underline sm:text-xs sm:tracking-[0.3em]">
           click here to find out more
         </span>
         <HandArrow flip />

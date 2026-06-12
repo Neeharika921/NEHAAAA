@@ -16,7 +16,8 @@ export default function Home() {
             <About />
           </div>
         </div>
-        <div id="more" aria-hidden className="absolute bottom-0 scroll-mt-[100vh]" />
+        {/* on mobile the pin animation is off, so target the top of About instead */}
+        <div id="more" aria-hidden className="absolute top-[100vh] md:top-auto md:bottom-0 md:scroll-mt-[100vh]" />
       </div>
       <Marquee />
       <Projects />

@@ -45,9 +45,14 @@ export default function Projects() {
                 </p>
                 {project.url && <span className="font-type pb-1 text-[9px] text-[#1c1410]/50">view ↗</span>}
               </div>
+              {/* touch screens never fire the hover overlay, so spell the details out */}
+              <p className="font-type mt-2 border-t border-[#1c1410]/15 pt-2 text-[10px] leading-[1.7] text-[#1c1410]/75 md:hidden">
+                {project.description}
+                {project.period && <span className="italic text-[#1c1410]/50"> · {project.period}</span>}
+              </p>
             </div>
           );
-          const wrapperClass = `group relative block w-48 transition-transform duration-300 hover:rotate-0 sm:w-56 ${TILTS[i % TILTS.length]}`;
+          const wrapperClass = `group relative block w-60 transition-transform duration-300 hover:rotate-0 sm:w-56 ${TILTS[i % TILTS.length]}`;
           return (
             <Reveal key={project.name} effect="place" delay={i * 150}>
               {project.url ? (
