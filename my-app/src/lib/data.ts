@@ -7,7 +7,7 @@ export const personal = {
   email: 'kuppilineeharika09@gmail.com',
   github: 'https://github.com/Neeharika921',
   linkedin: 'https://www.linkedin.com/in/neeharika-kuppili-665706289/',
-  resumeUrl: 'https://drive.google.com/file/d/12GqV6qhO300uoBBV-ggDtO31LJUUz2qj/view?usp=drive_link',
+  resumeUrl: 'https://drive.google.com/file/d/12GqV6qhO300uoBBV-ggDtO31LJUUz2qj/view?usp=sharing',
 } as const;
 
 export const summary = {
