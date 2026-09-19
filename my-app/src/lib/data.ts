@@ -7,7 +7,7 @@ export const personal = {
   email: 'kuppilineeharika09@gmail.com',
   github: 'https://github.com/Neeharika921',
   linkedin: 'https://www.linkedin.com/in/neeharika-kuppili-665706289/',
-  resumeUrl: 'https://drive.google.com/file/d/1j-bBUJ9CS3L-7S_rMqv8rZUWxJ-CzQRJ/view',
+  resumeUrl: 'https://drive.google.com/file/d/12GqV6qhO300uoBBV-ggDtO31LJUUz2qj/view?usp=drive_link',
 } as const;
 
 export const summary = {
@@ -28,20 +28,6 @@ export const education: Education = {
 
 export const work: WorkExperience[] = [
   {
-    title: 'Data Analytics Intern',
-    company: 'CodeAlpha',
-    type: 'Internship',
-    period: 'June 2025',
-    duration: '1 mo',
-    location: 'Remote',
-    mode: 'Remote',
-    bullets: [
-      'Analyzed data records and performed preprocessing to improve dataset quality and consistency.',
-      'Created visualizations and statistical reports to identify trends, correlations, and data patterns.',
-      'Tech: Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn.',
-    ],
-  },
-  {
     title: 'AI Engineer Intern',
     company: 'Symbiosys Technologies',
     type: 'Internship',
@@ -50,9 +36,23 @@ export const work: WorkExperience[] = [
     location: 'Remote',
     mode: 'Remote',
     bullets: [
-      'Contributed to the development of NoteAI, an AI-powered Learning Management System.',
+      'Contributed to NoteAI, an AI-powered Learning Management System for generating personalized learning content.',
       'Developed a context-aware AI chatbot using Google Gemini AI for intelligent question answering.',
-      'Tech: React, FastAPI, Google Gemini AI, Git, GitHub.',
+      'Worked with Python, FastAPI, and React.js to support AI-powered application development.',
+    ],
+  },
+  {
+    title: 'Data Analytics Intern',
+    company: 'CodeAlpha',
+    type: 'Internship',
+    period: 'June 2025',
+    duration: '1 mo',
+    location: 'Remote',
+    mode: 'Remote',
+    bullets: [
+      'Analyzed and preprocessed datasets to identify trends, patterns, and data-driven insights.',
+      'Created visualizations and reports to communicate analytical findings clearly.',
+      'Applied Python, Pandas, NumPy, Matplotlib, and Scikit-learn for data analysis tasks.',
     ],
   },
 ];
@@ -72,22 +72,44 @@ export const allSkills = skillCategories.flatMap((c) => c.items);
 
 export const projects: Project[] = [
   {
-    name: 'Detecting Osteoporosis Using Hybrid Quantum Deep Learning',
+    name: 'NoteAI – AI-Powered Learning Management System',
     description:
-      'Hybrid quantum machine learning model for osteoporosis detection using ResNet-50, achieving 92.35% accuracy and exploring a hybrid quantum-classical approach.',
-    tech: ['Python', 'TensorFlow', 'ResNet-50', 'PennyLane', 'Qiskit', 'OpenCV'],
+      'Built an AI-powered platform that converts educational videos into structured notes, quizzes, and study materials using Google Gemini AI.',
+    tech: [
+      'React.js',
+      'Vite',
+      'FastAPI',
+      'Python',
+      'Google Gemini AI',
+      'YouTube Transcript API',
+      'yt-dlp',
+    ],
   },
+
   {
     name: 'Customer Churn Prediction System',
     description:
-      'Random Forest-based customer churn prediction system that analyzes customer records and provides an interactive Streamlit dashboard.',
-    tech: ['Python', 'Pandas', 'Scikit-learn', 'Streamlit', 'Matplotlib'],
+      'Developed a Random Forest-based machine learning system to predict customer churn and deployed an interactive Streamlit dashboard for predictions and customer insights.',
+    tech: [
+      'Python',
+      'Pandas',
+      'Scikit-learn',
+      'Streamlit',
+      'Matplotlib',
+    ],
   },
+
   {
-    name: 'NoteAI – AI-Powered Learning Management System',
+    name: 'Candidate Screening Powered by AI',
     description:
-      'AI-powered platform that converts YouTube videos into notes, quizzes, presentations, and interactive study materials using Google Gemini AI.',
-    tech: ['React.js', 'Vite', 'FastAPI', 'Python', 'Google Gemini AI', 'YouTube Transcript API', 'yt-dlp'],
+      'Developed an AI-powered candidate screening system that matches candidate profiles with job requirements using NLP and extracts relevant skills for profile-matching insights.',
+    tech: [
+      'Python',
+      'NLP',
+      'Scikit-learn',
+      'Pandas',
+      'Streamlit',
+    ],
   },
 ];
 

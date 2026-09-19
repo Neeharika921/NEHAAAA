@@ -65,7 +65,7 @@ export default function About() {
             <Perf side="right" />
             <div className="border border-[#1c1410]/30 p-2">
               <Image
-                src="/NEHAA.png"
+                src="/NEHA.png"
                 alt="portrait of Neeharika"
                 width={416}
                 height={520}

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import type { IconType } from 'react-icons';
 import { SiPython, SiPandas, SiNumpy, SiScikitlearn, SiStreamlit, SiGit } from 'react-icons/si';
 import { FaDatabase, FaChartBar } from 'react-icons/fa';
-import { skillCategories, work, education, certifications } from '@/lib/data';
+import { skillCategories, work, certifications } from '@/lib/data';
 import Reveal from './Reveal';
 
 const BOARD = '#892319';
@@ -70,7 +70,6 @@ function tuck(transform: string, delay: number): React.CSSProperties {
 export default function Skills() {
   const [open, setOpen] = useState(false);
   const concepts = skillCategories.find((c) => c.label === 'Concepts')?.items ?? [];
-  const job = work[0];
 
   return (
     <section id="skills" className="relative overflow-hidden px-6 py-24 text-[#1c1410] md:py-28" style={{ backgroundColor: BOARD }}>
@@ -179,17 +178,14 @@ export default function Skills() {
             <h3 className="font-hand text-4xl text-[#9c2c1c]">my experience</h3>
             <Squiggle className="mt-1 text-[#9c2c1c]" />
             <div className="font-type mt-6 space-y-6 text-[11px] leading-6">
-              <div>
-                <p>
-                  {job.title}, {job.company} — {job.mode}
-                </p>
-                <p className="text-right italic text-[#1c1410]/70">{job.period}</p>
-              </div>
-              <div>
-                <p>{education.degree}</p>
-                <p>{education.institution} · CGPA {education.cgpa}</p>
-                <p className="text-right italic text-[#1c1410]/70">{education.period}</p>
-              </div>
+              {work.map((job) => (
+                <div key={`${job.company}-${job.period}`}>
+                  <p>
+                    {job.title}, {job.company} — {job.mode}
+                  </p>
+                  <p className="text-right italic text-[#1c1410]/70">{job.period}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
